@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #0f1117;
+    --color-surface: #13151f;
+    --color-surface-2: #1a1d27;
+    --color-border: #1e2130;
+    --color-border-light: #252839;
+    --color-text-primary: #e8eaf0;
+    --color-text-secondary: #7a7f96;
+    --color-text-muted: #4a4f66;
+    --color-brand: #6271f5;
+    --color-brand-dim: #3538a5;
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-light);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #353a55;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[#13151f] border border-[#1e2130] rounded-xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-[#252839] hover:bg-[#1a1d27];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg
+           bg-brand-600 hover:bg-brand-700 active:bg-brand-800
+           text-white text-sm font-medium
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-[#0f1117];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg
+           bg-[#1a1d27] hover:bg-[#1e2130] border border-[#1e2130] hover:border-[#252839]
+           text-[#e8eaf0] text-sm font-medium
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-[#0f1117];
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg
+           bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 hover:border-red-500/40
+           text-red-400 text-sm font-medium
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-lg
+           bg-[#0f1117] border border-[#1e2130] 
+           text-[#e8eaf0] text-sm placeholder-[#4a4f66]
+           focus:outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600
+           transition-colors duration-150;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-[#7a7f96] mb-1.5 uppercase tracking-wide;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+           bg-emerald-500/10 text-emerald-400 text-xs font-medium;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+           bg-red-500/10 text-red-400 text-xs font-medium;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+           bg-[#1a1d27] text-[#7a7f96] text-xs font-medium;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      #1a1d27 25%,
+      #1e2130 50%,
+      #1a1d27 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .stat-card {
+    @apply card p-5 flex flex-col gap-3;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-[#1a1d27] transition-colors duration-100;
+  }
+}
+
+@layer utilities {
+  .text-success { color: var(--color-success); }
+  .text-danger  { color: var(--color-danger); }
+  .text-muted   { color: var(--color-text-muted); }
+  .text-secondary { color: var(--color-text-secondary); }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+}
